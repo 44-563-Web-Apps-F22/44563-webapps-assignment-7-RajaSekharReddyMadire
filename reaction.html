@@ -42,11 +42,15 @@
   }
   function startTime()
   {
-    for(i=0;i<4;i++)
-    {
-      display(i)
-    }
-    setTimeout(()=>{
+      let min=2
+      let max=11
+      let result=Math.floor(Math.random()*(max-min))+min;
+      for(i=0;i<result;i++)
+      {
+        display(i,result)
+      
+      }
+      setTimeout(()=>{
       if(myTime==undefined)
       {
         document.getElementById("target").innerHTML="Too Slow"
@@ -57,14 +61,15 @@
         let lapse=buttonTime-myTime
         document.getElementById("target").innerHTML="Time was "+ lapse
       }
-    },3000
-    )
+      
+    },result*1000)
+  
   }
-  function display(i)
+  function display(i,result)
   {
     setTimeout(()=>{
       document.getElementById('countdown').innerHTML=i
-    },((3-i)*1000))
+    },((result-i)*1000))
   }
   
 </script>

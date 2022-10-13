@@ -17,7 +17,8 @@
 		 background-color: green;
 	  }
 	}
-</style></head>
+</style>
+</head>
 
 
 
@@ -36,6 +37,7 @@
 	
 	<button onclick="get()" class="btn btn-primary">Get</button>
 	<button onclick="spin()" class="btn btn-secondary">Spin</button><br>
+	<button onclick="swap()" class="btn btn-info">Swap</button>
 		
 	
 	
@@ -50,8 +52,7 @@
 
 		/* add it to the container */
 		let container = document.getElementById('target')
-		container.appendChild(element)
-		
+		container.appendChild(element)		
 	}
 	function get()
 	{
@@ -72,6 +73,34 @@
 			cyclerItems[size-1].remove()
 			let container = document.getElementById('target')
 			container.insertBefore(removedItem, container.firstChild)
+		}
+	}
+
+	function swap()
+	{
+		let cyclerItems=document.getElementsByClassName("cycler baseBlock")
+		let min=0
+		let max=cyclerItems.length
+
+		let random1=Math.floor(Math.random()*(max-min))+min;
+		let random2=Math.floor(Math.random()*(max-min))+min;
+		if((random1!=random2)&&max>1)
+		{
+			let itm1=cyclerItems[random1]
+			let itm2=cyclerItems[random2]
+			let container=document.getElementById('target')
+			if(random1>random2)
+			{
+				cyclerItems[random1].remove()
+				cyclerItems[random2].remove()
+			}
+			else
+			{
+				cyclerItems[random2].remove()
+				cyclerItems[random1].remove()
+			}
+			container.insertBefore(itm2,cyclerItems[random1])
+			container.insertBefore(itm1,cyclerItems[random2])
 		}
 	}
 	
